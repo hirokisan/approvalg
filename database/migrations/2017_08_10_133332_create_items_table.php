@@ -16,8 +16,9 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
-            $table->unsignedTinyInteger('phase_id');
-            $table->string('phase_type', 100);
+            $table->morphs('phase');
+            //$table->unsignedTinyInteger('phase_id');
+            //$table->string('phase_type', 100);
             $table->unsignedTinyInteger('item_category_id');
             $table->unsignedTinyInteger('authority_id');
             $table->unsignedTinyInteger('notification_id');
