@@ -13,4 +13,12 @@ class Item extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Get related authority
+     */
+    public function authority()
+    {
+        return $this->belongsTo('App\Authority');
+    }
 }
