@@ -15,6 +15,8 @@ class CreatePrivilegesTable extends Migration
     {
         Schema::create('privileges', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->int('scope');
             $table->timestamps();
         });
     }

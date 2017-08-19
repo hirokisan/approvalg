@@ -15,6 +15,13 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
+            $table->int('phase_id');
+            $table->string('phase_type');
+            $table->int('item_category_id');
+            $table->int('authority_id');
+            $table->int('notification_id');
+            $table->varchar('pdf_path');
+            $table->varchar('link_url');
             $table->timestamps();
         });
     }

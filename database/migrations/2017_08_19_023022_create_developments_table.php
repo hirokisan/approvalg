@@ -15,6 +15,8 @@ class CreateDevelopmentsTable extends Migration
     {
         Schema::create('developments', function (Blueprint $table) {
             $table->increments('id');
+            $table->int('project_id');
+            $table->int('status');
             $table->timestamps();
         });
     }
