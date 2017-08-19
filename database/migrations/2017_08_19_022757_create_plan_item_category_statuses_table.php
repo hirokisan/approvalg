@@ -19,6 +19,7 @@ class CreatePlanItemCategoryStatusesTable extends Migration
             $table->boolean('spec');
             $table->boolean('wireframe');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

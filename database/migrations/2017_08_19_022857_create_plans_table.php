@@ -18,6 +18,7 @@ class CreatePlansTable extends Migration
             $table->integer('project_id');
             $table->integer('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

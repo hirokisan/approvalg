@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->integer('category_id');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

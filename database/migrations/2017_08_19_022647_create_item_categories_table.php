@@ -19,6 +19,7 @@ class CreateItemCategoriesTable extends Migration
             $table->string('name');
             $table->string('name_jp');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

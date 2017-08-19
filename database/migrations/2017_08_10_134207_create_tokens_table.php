@@ -18,6 +18,7 @@ class CreateTokensTable extends Migration
             $table->integer('slack_id');
             $table->integer('chatwork_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -23,6 +23,7 @@ class CreateItemsTable extends Migration
             $table->string('pdf_path');
             $table->string('link_url');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

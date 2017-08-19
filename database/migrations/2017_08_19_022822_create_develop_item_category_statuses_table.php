@@ -18,6 +18,7 @@ class CreateDevelopItemCategoryStatusesTable extends Migration
             $table->integer('development_id');
             $table->boolean('ERD');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
