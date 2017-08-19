@@ -15,7 +15,7 @@ class Group extends Model
     }
 
     /**
-     * Get related related privilege
+     * Get related privilege
      */
     public function privilege()
     {
