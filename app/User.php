@@ -28,6 +28,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get related item
+     */
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
+
+    /**
      * Get related related group
      */
     public function group()
