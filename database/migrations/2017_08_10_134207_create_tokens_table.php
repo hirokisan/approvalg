@@ -15,8 +15,8 @@ class CreateTokensTable extends Migration
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('slack_id');
-            $table->int('chatwork_id');
+            $table->integer('slack_id');
+            $table->integer('chatwork_id');
             $table->timestamps();
         });
     }
