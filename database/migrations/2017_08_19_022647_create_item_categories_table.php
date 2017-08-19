@@ -16,8 +16,8 @@ class CreateItemCategoriesTable extends Migration
         Schema::create('item_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('phase');
-            $table->string('name');
-            $table->string('name_jp');
+            $table->string('name', 50)->unique();
+            $table->string('name_jp', 50)->unique();
             $table->timestamps();
             $table->softDeletes();
         });

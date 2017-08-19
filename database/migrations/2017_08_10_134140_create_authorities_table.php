@@ -15,8 +15,8 @@ class CreateAuthoritiesTable extends Migration
     {
         Schema::create('authorities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('status');
+            $table->string('name', 50)->unique();
+            $table->unsignedTinyInteger('status');
             $table->timestamps();
         });
     }

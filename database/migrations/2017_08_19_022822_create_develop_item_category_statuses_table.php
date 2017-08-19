@@ -15,7 +15,7 @@ class CreateDevelopItemCategoryStatusesTable extends Migration
     {
         Schema::create('develop_item_category_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('development_id');
+            $table->unsignedInteger('development_id');
             $table->boolean('ERD');
             $table->timestamps();
             $table->softDeletes();

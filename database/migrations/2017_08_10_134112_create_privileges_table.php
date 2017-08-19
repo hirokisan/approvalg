@@ -15,8 +15,8 @@ class CreatePrivilegesTable extends Migration
     {
         Schema::create('privileges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('scope');
+            $table->string('name', 50)->unique();
+            $table->unsignedTinyInteger('scope');
             $table->timestamps();
         });
     }

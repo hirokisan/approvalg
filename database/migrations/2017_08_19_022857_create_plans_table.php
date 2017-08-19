@@ -15,8 +15,8 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_id');
-            $table->integer('status');
+            $table->unsignedInteger('project_id');
+            $table->unsignedTinyInteger('status');
             $table->timestamps();
             $table->softDeletes();
         });
