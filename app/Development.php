@@ -11,6 +11,14 @@ class Development extends Model
      */
     public function developItemCategoryStatus()
     {
-        return $this->hasMany('App\DevelopItemCategoryStatus');
+        return $this->hasOne('App\DevelopItemCategoryStatus');
+    }
+
+    /**
+     * Get related itemCategory
+     */
+    public function itemCategory()
+    {
+        return $this->morphMany('App\Item', 'phase');
     }
 }

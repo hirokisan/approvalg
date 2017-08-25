@@ -21,4 +21,20 @@ class Item extends Model
     {
         return $this->belongsTo('App\Authority');
     }
+
+    /**
+     * Get related item_category
+     */
+    public function itemCategory()
+    {
+        return $this->belongsTo('App\ItemCategory');
+    }
+
+    /**
+     * Get related phase
+     */
+    public function phase()
+    {
+        return $this->morphTo();
+    }
 }
