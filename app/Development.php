@@ -15,9 +15,9 @@ class Development extends Model
     }
 
     /**
-     * Get related itemCategory
+     * Get related itemCategories
      */
-    public function itemCategory()
+    public function itemCategories()
     {
         return $this->morphMany('App\Item', 'phase');
     }

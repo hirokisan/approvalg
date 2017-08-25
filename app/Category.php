@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     /**
-     * Get related project
+     * Get related projects
      */
     public function projects()
     {

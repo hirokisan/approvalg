@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     /**
-     * Get related user
+     * Get related users
      */
     public function users()
     {

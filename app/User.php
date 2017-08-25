@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get related item
+     * Get related items
      */
     public function items()
     {

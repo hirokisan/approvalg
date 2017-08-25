@@ -25,7 +25,7 @@ class Project extends Model
     /**
      * Get related plan
      */
-    public function plans()
+    public function plan()
     {
         return $this->hasOne('App\Plan');
     }

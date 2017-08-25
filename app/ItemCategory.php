@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ItemCategory extends Model
 {
     /**
-     * Get related Item
+     * Get related Items
      */
     public function items()
     {
