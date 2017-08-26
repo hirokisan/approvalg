@@ -15,6 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('name', 100)->unique();
             $table->morphs('phase');
             //$table->unsignedTinyInteger('phase_id');
