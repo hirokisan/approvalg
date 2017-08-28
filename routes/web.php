@@ -22,4 +22,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('service', 'ServiceController');
 Route::resource('project', 'ProjectController');
 Route::get('/project/create/{id}', 'ProjectController@create')->name('project.create');
+Route::resource('category', 'CategoryController');
 Route::resource('user', 'UserController');
