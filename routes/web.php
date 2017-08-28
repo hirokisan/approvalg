@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('option', function () {
+        return view('option');
+})->name('option');
+
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
