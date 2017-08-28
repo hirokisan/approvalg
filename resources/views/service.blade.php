@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('title')
-Approvalg
+Searvice | Approvalg
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@ Approvalg
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    This is Home
+                    This is Service 
                 </div>
             </div>
         </div>
