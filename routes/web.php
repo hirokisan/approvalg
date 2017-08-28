@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('option', function () {
+        return view('option');
+})->name('option');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('service', 'ServiceController');
 Route::resource('project', 'ProjectController');
+Route::get('/project/create/{id}', 'ProjectController@create')->name('project.create');
 Route::resource('user', 'UserController');
