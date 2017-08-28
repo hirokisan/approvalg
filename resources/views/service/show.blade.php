@@ -14,7 +14,7 @@ Searvice Show | Approvalg
                 <div class="panel-body">
                     <p><a href="{{ route('project.create', ['id'=>$service->id]) }}">Project Create Page</a></p>
                     @foreach ($service->projects as $project)
-                    <li><a href="">{{ $project->name }}</a></li>
+                    <li><a href="{{ route('project.show', ['id'=>$project->id]) }}">{{ $project->name }}</a></li>
                     @endforeach
                 </div>
             </div>
