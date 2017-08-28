@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
+use App\Service;
 
 class ProjectController extends Controller
 {
@@ -23,7 +25,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('project');
+        return view('project/index');
     }
 
     /**
@@ -33,7 +35,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+
+        return view('project/create', ['services'=>$services]);
     }
 
     /**
@@ -44,7 +48,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project_name  = $request->input('project');
+        $service_id  = $request->input('service_id');
+
+        $project = new Project;
+
+        $project->name = $project_name;
+        $project->service_id = $service_id;
+
+        $project->save();
+
+        return redirect('service');
     }
 
     /**

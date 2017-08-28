@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('title')
-Searvice | Approvalg
+Searvice Create | Approvalg
 @endsection
 
 @section('content')
@@ -12,7 +12,12 @@ Searvice | Approvalg
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    This is Service 
+                    Service  Create
+                    <form action="{{ route('service.store') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input name="service" type="text" value="" >
+                    <input type="submit" value="post">
+                    </form>
                 </div>
             </div>
         </div>
