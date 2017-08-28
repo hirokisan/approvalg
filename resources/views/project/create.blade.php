@@ -16,11 +16,7 @@ Project Create | Approvalg
                     <form action="{{ route('project.store') }}" method="POST">
                     {{ csrf_field() }}
                     <input name="project" type="text" value="" >
-                    <select name="service_id">
-                        @foreach ($services as $service)
-                        <option value="{{ $service->id }}">{{ $service->name }}</option>
-                        @endforeach
-                    </select>
+                    <input name="service_id" type="hidden" value="{{ $service->id }}" >
                     <input type="submit" value="post">
                     </form>
                 </div>

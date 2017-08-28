@@ -33,11 +33,11 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $services = Service::all();
+        $service = Service::where('id', $id)->first();
 
-        return view('project/create', ['services'=>$services]);
+        return view('project/create', ['service'=>$service]);
     }
 
     /**
