@@ -2,23 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Project;
-use App\Service;
 use App\Category;
+use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +14,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('project/index');
+        $categories = Category::all();
+
+        return view('category/index', ['categories'=>$categories]);
     }
 
     /**
@@ -34,12 +24,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $service = Service::where('id', $id)->first();
-        $categories = Category::all();
-
-        return view('project/create', ['service'=>$service, 'categories'=>$categories]);
+        //
     }
 
     /**
@@ -50,28 +37,24 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $project_name  = $request->input('project');
-        $service_id  = $request->input('service_id');
-        $category_id  = $request->input('category_id');
+        $category_name  = $request->input('category');
 
-        $project = new Project;
+        $category = new category;
 
-        $project->name = $project_name;
-        $project->service_id = $service_id;
-        $project->category_id = $service_id;
+        $category->name = $category_name;
 
-        $project->save();
+        $category->save();
 
-        return redirect('service');
+        return redirect('category');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -79,10 +62,10 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -91,10 +74,10 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -102,10 +85,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

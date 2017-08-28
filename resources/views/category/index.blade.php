@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 @section('title')
-Project Create | Approvalg
+Category | Approvalg
 @endsection
 
 @section('content')
@@ -9,17 +9,16 @@ Project Create | Approvalg
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Project Create</div>
-
+                <div class="panel-heading">Category</div>
                 <div class="panel-body">
-                    <form action="{{ route('project.store') }}" method="POST">
-                    {{ csrf_field() }}
-                    <input name="project" type="text" value="" >
-                    <input name="service_id" type="hidden" value="{{ $service->id }}" >
-                    <select name="category_id">
+                    <ul>
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <li>{{ $category->name }}</li>
                         @endforeach
+                    </ul>
+                    <form action="{{ route('category.store') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input name="category" type="text" value="" >
                     <input type="submit" value="create">
                     </form>
                 </div>
@@ -28,4 +27,5 @@ Project Create | Approvalg
     </div>
 </div>
 @endsection
+
 
