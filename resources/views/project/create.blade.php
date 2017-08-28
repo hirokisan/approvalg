@@ -16,6 +16,10 @@ Project Create | Approvalg
                     {{ csrf_field() }}
                     <input name="project" type="text" value="" >
                     <input name="service_id" type="hidden" value="{{ $service->id }}" >
+                    <select name="category_id">
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     <input type="submit" value="create">
                     </form>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Service;
+use App\Category;
 
 class ProjectController extends Controller
 {
@@ -36,8 +37,9 @@ class ProjectController extends Controller
     public function create($id)
     {
         $service = Service::where('id', $id)->first();
+        $categories = Category::all();
 
-        return view('project/create', ['service'=>$service]);
+        return view('project/create', ['service'=>$service, 'categories'=>$categories]);
     }
 
     /**
@@ -50,11 +52,13 @@ class ProjectController extends Controller
     {
         $project_name  = $request->input('project');
         $service_id  = $request->input('service_id');
+        $category_id  = $request->input('category_id');
 
         $project = new Project;
 
         $project->name = $project_name;
         $project->service_id = $service_id;
+        $project->category_id = $service_id;
 
         $project->save();
 
