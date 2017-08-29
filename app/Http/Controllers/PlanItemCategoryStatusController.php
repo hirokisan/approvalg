@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Plan;
 use App\PlanItemCategoryStatus;
 use Illuminate\Http\Request;
 
-class PlanController extends Controller
+class PlanItemCategoryStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,29 +35,16 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $plan = new Plan;
-        $plan_item_category_status = new PlanItemCategoryStatus;
-
-        $project_id = $request->input('project_id');
-        $status = 2; //this means need plan
-
-        $plan->project_id = $project_id;
-        $plan->status = $status;
-        $plan->save();
-
-        $plan_item_category_status->plan_id = $plan->id;
-        $plan_item_category_status->save();
-
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Plan  $plan
+     * @param  \App\PlanItemCategoryStatus  $planItemCategoryStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show(PlanItemCategoryStatus $planItemCategoryStatus)
     {
         //
     }
@@ -66,10 +52,10 @@ class PlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Plan  $plan
+     * @param  \App\PlanItemCategoryStatus  $planItemCategoryStatus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plan $plan)
+    public function edit(PlanItemCategoryStatus $planItemCategoryStatus)
     {
         //
     }
@@ -78,10 +64,10 @@ class PlanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Plan  $plan
+     * @param  \App\PlanItemCategoryStatus  $planItemCategoryStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plan $plan)
+    public function update(Request $request, PlanItemCategoryStatus $planItemCategoryStatus)
     {
         //
     }
@@ -89,10 +75,10 @@ class PlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Plan  $plan
+     * @param  \App\PlanItemCategoryStatus  $planItemCategoryStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plan $plan)
+    public function destroy(PlanItemCategoryStatus $planItemCategoryStatus)
     {
         //
     }
