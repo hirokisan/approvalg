@@ -14,6 +14,11 @@ Project Show | Approvalg
                 <div class="panel-body">
                     <p>Create Plan</p>
                         <span style="display: block;">このプロジェクトにPlanが必要かどうかを選ぶ</span>
+                        <form action="{{ route('plan.store') }}" method="POST">
+                        {{ csrf_field() }}
+                        <input name="project_id" type="hidden" value="{{  $project->id}}" >
+                        <input type="submit" value="create">
+                        </form>
                         <span style="display: block;">このプロジェクトにはPlanのどのアイテムが必要かを選ぶ</span>
                         <span style="display: block;">このプロジェクトに必要なアイテムをアップロードするためのページに遷移する</span>
                         <span style="display: block;">このプロジェクトに必要なPlanのアイテム一覧が見られる</span>

@@ -24,3 +24,4 @@ Route::resource('project', 'ProjectController');
 Route::get('/project/create/{id}', 'ProjectController@create')->name('project.create');
 Route::resource('category', 'CategoryController');
 Route::resource('user', 'UserController');
+Route::resource('plan', 'PlanController');
