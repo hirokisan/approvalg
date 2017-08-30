@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
 class PlanItemCategoryStatus extends Model
 {
     /**
@@ -12,5 +15,16 @@ class PlanItemCategoryStatus extends Model
     public function plan()
     {
         return $this->belongsTo('App\Plan');
+    }
+
+    /**
+     * Create column
+     */
+    public function createColumn($name)
+    {
+        Schema::table('plan_item_category_statuses', function(Blueprint $table) use ($name)
+        {
+           $table->string($name)->default('0');
+        });
     }
 }

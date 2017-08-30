@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ItemCategory;
+use App\PlanItemCategoryStatus;
 use Illuminate\Http\Request;
 
 class ItemCategoryController extends Controller
@@ -41,6 +42,7 @@ class ItemCategoryController extends Controller
     public function store(Request $request)
     {
         $itemCategory = new ItemCategory;
+        $planItemCategoryStatus = new PlanItemCategoryStatus;
 
         $phase = $request->input('phase');
         $name = $request->input('name');
@@ -50,6 +52,11 @@ class ItemCategoryController extends Controller
         $itemCategory->name_jp = $name;
 
         $itemCategory->save();
+
+        if($phase == 'plan'){
+            $planItemCategoryStatus->createColumn($name);
+            $planItemCategoryStatus->save();
+        }
 
         return back();
     }
