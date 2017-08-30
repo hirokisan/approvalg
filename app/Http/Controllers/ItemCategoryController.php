@@ -40,7 +40,18 @@ class ItemCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $itemCategory = new ItemCategory;
+
+        $phase = $request->input('phase');
+        $name = $request->input('name');
+
+        $itemCategory->phase = $phase;
+        $itemCategory->name = $name;
+        $itemCategory->name_jp = $name;
+
+        $itemCategory->save();
+
+        return back();
     }
 
     /**
