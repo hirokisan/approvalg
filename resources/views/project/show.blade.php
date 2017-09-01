@@ -14,14 +14,14 @@ Project Show | Approvalg
                 <div class="panel-body">
                     @if (empty($project->plan))
                     <p>Create Plan</p>
-                        <span style="display: block;">このプロジェクトにPlanが必要かどうかを選ぶ</span>
+                        <p>このプロジェクトにPlanが必要かどうかを選ぶ</p>
                         <form action="{{ route('plan.store') }}" method="POST">
                         {{ csrf_field() }}
                         <input name="project_id" type="hidden" value="{{  $project->id}}" >
                         <input type="submit" value="create">
                         </form>
                     @else
-                        <span style="display: block;">このプロジェクトにはPlanのどのアイテムが必要かを選ぶ</span>
+                        <p>このプロジェクトにはPlanのどのアイテムが必要かを選ぶ</p>
                         <form action="{{ route('plan_item_category_status.store') }}" method="POST">
                         {{ csrf_field() }}
                             <ul>
@@ -29,14 +29,42 @@ Project Show | Approvalg
                                 <input type="checkbox" name="{{ $itemPlanCategory->name }}" id="{{ $itemPlanCategory->name }}" value="1"><label for="{{ $itemPlanCategory->name }}">{{ $itemPlanCategory->name }}</label>
                                 @endforeach
                             </ul>
-                            <input name="plan_id" type="hidden" value="{{  $project->plan->id}}" >
+                            <input name="plan_id" type="hidden" value="{{ $project->plan->id }}" >
                             <input type="submit" value="Push">
                         </form>
-                        <span style="display: block;">このプロジェクトに必要なアイテムをアップロードするためのページに遷移する</span>
-                            //foreach planItemCategoryStatus and create fields for storing each items
-                        <span style="display: block;">このプロジェクトに必要なPlanのアイテム一覧が見られる</span>
+                        <p>このプロジェクトに必要なPlanのアイテム一覧が見られる</p>
+                        <p>このプロジェクトに必要なアイテムをアップロードする</p>
+                            @foreach ($itemPlanCategories as $itemPlanCategory)
+                            <div>
+                                @if ($planItemCategoryStatus->$itemPlanCategory['name'] == 1)
+                                {{ $itemPlanCategory['name'] }}
+                                <form action="{{ route('plan_item_category_status.store') }}" method="POST">
+                                {{ csrf_field() }}
+                                <dl>
+                                    <dt>Input URL</dt>
+                                    <dd><input name="url" type="text"></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Input File</dt>
+                                    <dd><input id="" type="file" name="file"></dd>
+                                </dl>
+                                <input name="phase_id" type="hidden" value="{{ $project->plan->id }}">
+                                <input name="phase_type" type="hidden" value="App\Plan">
+                                <input type="submit" value="Upload">
+                                </form>
+                                @endif
+                            </div>
+                            @endforeach
                     @endif
-                    <p>Create Development</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Project : {{ $project->name }}</div>
+
+                <div class="panel-body">
+                    <p>このプロジェクトにはDevelopmentのどのアイテムが必要かを選ぶ</p>
                 </div>
             </div>
         </div>

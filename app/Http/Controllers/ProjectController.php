@@ -7,6 +7,7 @@ use App\Project;
 use App\Service;
 use App\Category;
 use App\ItemCategory;
+use App\PlanItemCategoryStatus;
 
 class ProjectController extends Controller
 {
@@ -75,12 +76,14 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::where('id', $id)->first();
+        $plan_id = $project->plan->id;
+        $planItemCategoryStatus = PlanItemCategoryStatus::all()->where('plan_id', $plan_id)->first();
 
         $itemCategories = ItemCategory::all();
         $itemPlanCategories = $itemCategories->where('phase','plan');
         $itemDevelopmentCategories = $itemCategories->where('phase','development');
 
-        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories]);
+        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories, 'planItemCategoryStatus'=>$planItemCategoryStatus]);
     }
 
     /**

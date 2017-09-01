@@ -46,7 +46,9 @@ class PlanItemCategoryStatusController extends Controller
 
         foreach ($itemCategories as $itemCategory){
             $name = $itemCategory->name;
-            $planItemCategoryStatus->$name = $request->input($itemCategory->name);
+            if(empty($planItemCategoryStatus->$name)){
+                $planItemCategoryStatus->$name = $request->input($itemCategory->name);
+            }
         }
 
         $planItemCategoryStatus->save();
