@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ItemCategory;
 use App\PlanItemCategoryStatus;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,22 @@ class PlanItemCategoryStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plan_id = $request->input('plan_id');
+
+        /* need first()
+         * @see https://stackoverflow.com/questions/43320223/property-id-does-not-exist-on-this-collection-instance
+         */
+        $planItemCategoryStatus = PlanItemCategoryStatus::all()->where('plan_id',$plan_id)->first();
+        $itemCategories = ItemCategory::all()->where('phase', 'plan');
+
+        foreach ($itemCategories as $itemCategory){
+            $name = $itemCategory->name;
+            $planItemCategoryStatus->$name = $request->input($itemCategory->name);
+        }
+
+        $planItemCategoryStatus->save();
+
+        return back();
     }
 
     /**
