@@ -27,3 +27,4 @@ Route::resource('user', 'UserController');
 Route::resource('plan', 'PlanController');
 Route::resource('plan_item_category_status', 'PlanItemCategoryStatusController');
 Route::resource('item_category', 'ItemCategoryController');
+Route::resource('item', 'ItemController');

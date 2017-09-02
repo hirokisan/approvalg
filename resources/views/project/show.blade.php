@@ -34,24 +34,31 @@ Project Show | Approvalg
                         </form>
                         <p>このプロジェクトに必要なPlanのアイテム一覧が見られる</p>
                         <p>このプロジェクトに必要なアイテムをアップロードする</p>
+                            <?php //todo: itemの追加は別ページに分割した方がいいかも。ロジックがわかりづらくなってきた。?>
                             @foreach ($itemPlanCategories as $itemPlanCategory)
                             <div>
                                 @if ($planItemCategoryStatus->$itemPlanCategory['name'] == 1)
                                 {{ $itemPlanCategory['name'] }}
-                                <form action="{{ route('plan_item_category_status.store') }}" method="POST">
-                                {{ csrf_field() }}
-                                <dl>
-                                    <dt>Input URL</dt>
-                                    <dd><input name="url" type="text"></dd>
-                                </dl>
-                                <dl>
-                                    <dt>Input File</dt>
-                                    <dd><input id="" type="file" name="file"></dd>
-                                </dl>
-                                <input name="phase_id" type="hidden" value="{{ $project->plan->id }}">
-                                <input name="phase_type" type="hidden" value="App\Plan">
-                                <input type="submit" value="Upload">
-                                </form>
+                                    @if (empty($items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()))
+                                    <form action="{{ route('item.store') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <dl>
+                                        <dt>Input URL</dt>
+                                        <dd><input name="link_url" type="text"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Input File</dt>
+                                        <dd><input id="" type="file" name="file"></dd>
+                                    </dl>
+                                    <input name="name" type="text" value="">
+                                    <input name="phase_id" type="hidden" value="{{ $project->plan->id }}">
+                                    <input name="phase_type" type="hidden" value="App\Plan">
+                                    <input name="item_category_id" type="hidden" value="{{ $itemPlanCategory->id }}">
+                                    <input type="submit" value="Upload">
+                                    </form>
+                                    @else
+                                        <a href="{{ $items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()->link_url }}">Link URL</a>
+                                    @endif
                                 @endif
                             </div>
                             @endforeach

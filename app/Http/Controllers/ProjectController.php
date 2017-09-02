@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Service;
+use App\Item;
 use App\Category;
 use App\ItemCategory;
 use App\PlanItemCategoryStatus;
@@ -75,6 +76,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
+        $items = Item::all();
+
         $project = Project::where('id', $id)->first();
         $plan_id = $project->plan->id;
         $planItemCategoryStatus = PlanItemCategoryStatus::all()->where('plan_id', $plan_id)->first();
@@ -83,7 +86,7 @@ class ProjectController extends Controller
         $itemPlanCategories = $itemCategories->where('phase','plan');
         $itemDevelopmentCategories = $itemCategories->where('phase','development');
 
-        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories, 'planItemCategoryStatus'=>$planItemCategoryStatus]);
+        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories, 'planItemCategoryStatus'=>$planItemCategoryStatus, 'items'=>$items]);
     }
 
     /**
