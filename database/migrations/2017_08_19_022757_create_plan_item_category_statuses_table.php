@@ -16,8 +16,6 @@ class CreatePlanItemCategoryStatusesTable extends Migration
         Schema::create('plan_item_category_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('plan_id');
-            $table->boolean('spec');
-            $table->boolean('wireframe');
             $table->timestamps();
             $table->softDeletes();
         });
