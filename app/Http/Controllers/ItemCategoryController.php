@@ -55,7 +55,6 @@ class ItemCategoryController extends Controller
 
         if($phase == 'plan'){
             $planItemCategoryStatus->createColumn($name);
-            $planItemCategoryStatus->save();
         }
 
         return back();
