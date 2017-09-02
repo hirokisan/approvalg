@@ -40,7 +40,7 @@ Project Show | Approvalg
                                 @if ($planItemCategoryStatus->$itemPlanCategory['name'] == 1)
                                 {{ $itemPlanCategory['name'] }}
                                     @if (empty($items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()))
-                                    <form action="{{ route('item.store') }}" method="POST">
+                                    <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <dl>
                                         <dt>Input URL</dt>
@@ -48,7 +48,7 @@ Project Show | Approvalg
                                     </dl>
                                     <dl>
                                         <dt>Input File</dt>
-                                        <dd><input id="" type="file" name="file"></dd>
+                                        <dd><input id="upload_file" type="file" name="upload_file"></dd>
                                     </dl>
                                     <input name="name" type="text" value="">
                                     <input name="phase_id" type="hidden" value="{{ $project->plan->id }}">
@@ -58,6 +58,7 @@ Project Show | Approvalg
                                     </form>
                                     @else
                                         <a href="{{ $items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()->link_url }}">Link URL</a>
+                                        <a href="{{ asset('storage/'.$items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()->pdf_path) }}" target="_blank">{{ $items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()->pdf_path}}</a>
                                     @endif
                                 @endif
                             </div>

@@ -44,10 +44,19 @@ class ItemController extends Controller
         $item_category_id = $request->input('item_category_id');
         $link_url = $request->input('link_url');
 
+        if ($request->hasFile('upload_file')) {
+            $filename = $request->file('upload_file')->getClientOriginalName();
+            $path = $request->file('upload_file')->storeAs('public', $filename, 'local');
+            $item->pdf_path = $filename;
+        }
+
         $item->name = $name;
         $item->phase_id = $phase_id;
         $item->phase_type = $phase_type;
         $item->item_category_id = $item_category_id;
+        if($request->has('link_url')){
+            $item->link_url = $link_url;
+        }
         $item->user_id = Auth::id();
 
         $item->save();
