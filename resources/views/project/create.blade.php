@@ -20,6 +20,7 @@ Project Create | Approvalg
                         @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
+                    </select>
                     <input type="submit" value="create">
                     </form>
                 </div>

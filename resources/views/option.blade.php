@@ -12,6 +12,7 @@ Option | Approvalg
                 <div class="panel-heading">Option</div>
                 <div class="panel-body">
                     <p><a href="{{ route('category.index') }}">Category Page</a></p>
+                    <p><a href="{{ route('item_category.index') }}">Item Category Page</a></p>
                 </div>
             </div>
         </div>
