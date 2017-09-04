@@ -46,7 +46,7 @@ class DevelopmentItemCategoryStatusController extends Controller
 
         foreach ($itemCategories as $itemCategory){
             $name = $itemCategory->name;
-            if(empty($developmentItemCategoryStatus->$name)){
+            if(empty($developmentItemCategoryStatus->$name) && !empty($request->input($itemCategory->name))){
                 $developmentItemCategoryStatus->$name = $request->input($itemCategory->name);
             }
         }

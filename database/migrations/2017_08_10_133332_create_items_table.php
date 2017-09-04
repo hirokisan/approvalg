@@ -21,10 +21,10 @@ class CreateItemsTable extends Migration
             //$table->unsignedTinyInteger('phase_id');
             //$table->string('phase_type', 100);
             $table->unsignedTinyInteger('item_category_id');
-            $table->unsignedTinyInteger('authority_id');
-            $table->unsignedTinyInteger('notification_id');
-            $table->string('pdf_path');
-            $table->string('link_url');
+            $table->unsignedTinyInteger('authority_id')->default(0);
+            $table->unsignedTinyInteger('notification_id')->default(0);
+            $table->string('pdf_path')->default('');
+            $table->string('link_url')->default('');
             $table->timestamps();
             $table->softDeletes();
         });
