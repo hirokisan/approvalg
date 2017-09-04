@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Development extends Model
 {
     /**
-     * Get related developItemCategoryStatus
+     * Get related developmentItemCategoryStatus
      */
-    public function developItemCategoryStatus()
+    public function developmentItemCategoryStatus()
     {
-        return $this->hasOne('App\DevelopItemCategoryStatus');
+        return $this->hasOne('App\developmentItemCategoryStatus');
     }
 
     /**

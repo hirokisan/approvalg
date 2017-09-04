@@ -9,6 +9,7 @@ use App\Item;
 use App\Category;
 use App\ItemCategory;
 use App\PlanItemCategoryStatus;
+use App\DevelopmentItemCategoryStatus;
 
 class ProjectController extends Controller
 {
@@ -79,14 +80,22 @@ class ProjectController extends Controller
         $items = Item::all();
 
         $project = Project::where('id', $id)->first();
-        $plan_id = $project->plan->id;
-        $planItemCategoryStatus = PlanItemCategoryStatus::all()->where('plan_id', $plan_id)->first();
+        $planItemCategoryStatus = '';
+        if(!empty($project->plan->id)){
+            $plan_id = $project->plan->id;
+            $planItemCategoryStatus = PlanItemCategoryStatus::all()->where('plan_id', $plan_id)->first();
+        }
+        $developmentItemCategoryStatus = '';
+        if(!empty($project->development->id)){
+            $development_id = $project->development->id;
+            $developmentItemCategoryStatus = DevelopmentItemCategoryStatus::all()->where('development_id', $development_id)->first();
+        }
 
         $itemCategories = ItemCategory::all();
         $itemPlanCategories = $itemCategories->where('phase','plan');
         $itemDevelopmentCategories = $itemCategories->where('phase','development');
 
-        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories, 'planItemCategoryStatus'=>$planItemCategoryStatus, 'items'=>$items]);
+        return view('project/show', ['project'=>$project, 'itemPlanCategories'=>$itemPlanCategories, 'itemDevelopmentCategories'=>$itemDevelopmentCategories, 'planItemCategoryStatus'=>$planItemCategoryStatus, 'developmentItemCategoryStatus'=>$developmentItemCategoryStatus, 'items'=>$items]);
     }
 
     /**

@@ -29,4 +29,12 @@ class Project extends Model
     {
         return $this->hasOne('App\Plan');
     }
+
+    /**
+     * Get related development
+     */
+    public function development()
+    {
+        return $this->hasOne('App\Development');
+    }
 }

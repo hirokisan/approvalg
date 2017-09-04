@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ItemCategory;
 use App\PlanItemCategoryStatus;
+use App\DevelopmentItemCategoryStatus;
 use Illuminate\Http\Request;
 
 class ItemCategoryController extends Controller
@@ -43,6 +44,7 @@ class ItemCategoryController extends Controller
     {
         $itemCategory = new ItemCategory;
         $planItemCategoryStatus = new PlanItemCategoryStatus;
+        $developmentItemCategoryStatus = new DevelopmentItemCategoryStatus;
 
         $phase = $request->input('phase');
         $name = $request->input('name');
@@ -55,6 +57,10 @@ class ItemCategoryController extends Controller
 
         if($phase == 'plan'){
             $planItemCategoryStatus->createColumn($name);
+        }
+
+        if($phase == 'development'){
+            $developmentItemCategoryStatus->createColumn($name);
         }
 
         return back();
