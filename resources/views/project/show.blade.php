@@ -37,7 +37,7 @@ Project Show | Approvalg
                             <?php //todo: itemの追加は別ページに分割した方がいいかも。ロジックがわかりづらくなってきた。?>
                             @foreach ($itemPlanCategories as $itemPlanCategory)
                             <div>
-                                @if ($planItemCategoryStatus->$itemPlanCategory['name'] == 1)
+                                @if ($planItemCategoryStatus[$itemPlanCategory['name']] == 1)
                                 {{ $itemPlanCategory['name'] }}
                                     @if (empty($items->where('phase_id', $project->plan->id)->where('phase_type','App\Plan')->where('item_category_id',$itemPlanCategory->id)->first()))
                                     <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
@@ -97,7 +97,7 @@ Project Show | Approvalg
                             <?php //todo: itemの追加は別ページに分割した方がいいかも。ロジックがわかりづらくなってきた。?>
                             @foreach ($itemDevelopmentCategories as $itemDevelopmentCategory)
                             <div>
-                                @if ($developmentItemCategoryStatus->$itemDevelopmentCategory['name'] == 1)
+                                @if ($developmentItemCategoryStatus[$itemDevelopmentCategory['name']] == 1)
                                 {{ $itemDevelopmentCategory['name'] }}
                                     @if (empty($items->where('phase_id', $project->development->id)->where('phase_type','App\Development')->where('item_category_id',$itemDevelopmentCategory->id)->first()))
                                     <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data">
