@@ -24,7 +24,7 @@ class DevelopmentItemCategoryStatus extends Model
     {
         Schema::table('development_item_category_statuses', function(Blueprint $table) use ($name)
         {
-           $table->string($name)->default('0');
+           $table->unsignedTinyInteger($name)->default('0');
         });
     }
 }
