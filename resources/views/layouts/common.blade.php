@@ -8,6 +8,7 @@
     </head>
     <body>
         @include('common.header')
+        @yield('breadcrumbs')
         @yield('content')
         @include('common.footer')
     </body>

@@ -4,6 +4,10 @@
 Option | Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('option') !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
