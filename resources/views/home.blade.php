@@ -4,6 +4,10 @@
 Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('home') !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

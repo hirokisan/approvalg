@@ -4,6 +4,10 @@
 Searvice | Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('service.index') !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

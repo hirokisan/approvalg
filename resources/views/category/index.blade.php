@@ -4,6 +4,10 @@
 Category | Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('category.index') !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

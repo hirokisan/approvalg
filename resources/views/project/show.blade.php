@@ -4,6 +4,10 @@
 Project Show | Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('project.show', $project->service, $project) !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
