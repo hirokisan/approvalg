@@ -4,6 +4,10 @@
 Project Create | Approvalg
 @endsection
 
+@section('breadcrumbs')
+{!! Breadcrumbs::Render('project.create', $service) !!}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

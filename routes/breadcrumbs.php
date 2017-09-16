@@ -35,6 +35,12 @@ Breadcrumbs::register('project.show', function ($breadcrumbs, $service, $project
     $breadcrumbs->push($project->name, route('project.show', $project->id));
 });
 
+// home > project.create
+Breadcrumbs::register('project.create', function ($breadcrumbs, $service) {
+    $breadcrumbs->parent('service.show', $service);
+    $breadcrumbs->push('project.create', route('project.create', $service->id));
+});
+
 // home > option
 Breadcrumbs::register('option', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
